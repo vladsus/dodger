@@ -1,0 +1,18 @@
+/// @description Collision_obj_player
+// You can write your code in this editor
+global.points += 5
+audio_play_sound(snd_coin,0,0)
+instance_destroy()
+
+/// @description Create_0
+// You can write your code in this editor
+speed = 6
+direction = 90
+gravity = .5
+
+/// @description Step_0
+// You can write your code in this editor
+if y > 512
+{
+instance_destroy()
+}

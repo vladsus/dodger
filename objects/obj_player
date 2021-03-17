@@ -1,0 +1,21 @@
+/// @description Create and set variables.
+spd = 4 //speed for obj_player
+dist = 5 //distance between obj_player and mouse_x or mouse_y
+
+/// @description Movement towards mouse code, using dist and spd variables defined in Create code.
+if x >= mouse_x + dist || x <= mouse_x - dist
+	{
+		move_towards_point(mouse_x,mouse_y,spd) 
+	}
+	else
+	{
+	x = mouse_x	
+	}
+if y >=mouse_y+dist || y <=mouse_y-dist
+	{
+	move_towards_point(mouse_x,mouse_y,spd)	
+	}
+	else
+	{
+	y = mouse_y	
+	}

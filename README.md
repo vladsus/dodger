@@ -1,5 +1,6 @@
 # dodger
 ![woof1](https://github.com/vladsus/dodger/blob/main/dodgermovie.gif "Gameplay GIF")
+
 Dodger game made in GMS2.
 
 ![woof2](https://github.com/vladsus/dodger/blob/main/dodgergameplay1.PNG "Gameplay 1")

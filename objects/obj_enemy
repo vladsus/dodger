@@ -1,0 +1,22 @@
+/// @description Set scale randomly, set upwards speed and direction, then gravity to make enemy go down.
+scale = random(2.5)+.5
+image_xscale = scale
+image_yscale = scale
+speed = 6
+direction = 90
+gravity = .5
+
+/// @description If enemy is past the screen border, destroy and give 1 point.
+if y > 512
+{
+global.points +=1
+instance_destroy()
+}
+
+/// @description If colliding with player, set game state to not playing, stop all audio, play the lose music, destroy the player, then destroy all instances of enemy.
+global.playing = 1
+audio_stop_all()
+audio_play_sound(snd_lose,0,0)
+instance_destroy(obj_player)
+instance_destroy(obj_enemy)
+instance_destroy()

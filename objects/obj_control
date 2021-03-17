@@ -1,0 +1,84 @@
+/// @description Main controller object. 
+randomize() //Randomize
+image_xscale = 2 //Set scaling
+image_yscale = 2
+global.playing = 0 //Set game state to playing
+audio_play_sound(snd_music,0,1) //Play background music
+global.points = 0 //Set score to 0
+alarmscale = 60 //Set alarmscale to 60
+alarm[0] = alarmscale //Set enemy alarm speed to alarmscale
+alarm[1] = 300 //Set coin alarm speed to 300
+
+/// @description Increase the image angle by .25 every step.
+image_angle += .25
+
+/// @description Draw sprites / objects in the room.
+draw_self()
+if global.playing = 0 //If game state is playing
+{
+draw_set_color(c_black) //Set score color to be black
+}
+else
+{
+customcolor= make_color_rgb(irandom(255),irandom(255),irandom(255)) //Set the score color to be rainbow
+draw_set_color(customcolor)
+}
+draw_set_font(fnt_font1) //Pick font
+draw_text(room_width/2-48,room_height/2-64,global.points) //Draw score in middle of room
+
+/// @description Restart game code
+image_angle = 0 //reset image angle
+audio_stop_all() //stop all sounds
+room_restart() //restart room
+global.playing = 0 //set game state to playing
+global.points = 0 //set score to 0
+audio_play_sound(snd_music,0,1) //start playing music
+alarmscale = 60 //set alarm scale to 60
+alarm[0] = alarmscale //set enemy alarm to alarm scale
+alarm[1] = 300 //set coin alarm to 300
+
+/// @description Makes the controller spin faster if player is touching it (purely cosmetic)
+image_angle += 6
+//but very risky and entertaining
+
+/// @description Every time alarm[0] is called...
+if global.playing = 0 //If game state is playing
+{
+instance_create_layer(irandom(room_width),irandom(room_height/8),0,obj_enemy) //Create an enemy somewhere randomly
+alarm[0] = alarmscale //Reset the timer
+if global.points = 16 //If points are this
+alarmscale = 55 //Reduce alarm scale by this
+if global.points = 32 //repeat 
+alarmscale = 50
+if global.points = 64
+alarmscale = 45
+if global.points = 128
+alarmscale = 40
+if global.points = 256
+alarmscale = 35
+if global.points = 512
+alarmscale = 30
+if global.points = 1024 //I got lazy with this code btw
+alarmscale = 25
+if global.points = 1024*2
+alarmscale = 20
+if global.points = 1024*4
+alarmscale = 15
+if global.points = 1024*8
+alarmscale = 10
+if global.points = 1024*16
+alarmscale = 5
+if global.points = 1024*32
+alarmscale = 1
+}
+
+/// @description Coin Alarm
+coin = choose(1)
+if global.playing = 0 //If game state is playing
+{
+if coin = 1
+{
+instance_create_layer(irandom(room_width),irandom(room_height/8),0,obj_coin) //Create a coin randomly
+}
+alarm[1] = 300 //Reset coin alarm
+}
